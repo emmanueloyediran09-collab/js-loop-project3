@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottles on the Wall</title>
+    <style>
+        :reset, * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #2c2924;
+            --paper: #f5f0e6;
+            --red: #9d3d32;
+            --gold: #bc9a63;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 15% 20%, rgba(188, 154, 99, 0.12), transparent 24rem),
+                linear-gradient(135deg, #d8d0c0 0%, #eee8dc 48%, #cfc5b1 100%);
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.32;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+        }
+
+        .page {
+            width: min(920px, calc(100% - 32px));
+            margin: 32px auto;
+            position: relative;
+        }
+
+        .masthead {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 10px 4px 14px;
+            border-bottom: 1px solid rgba(44, 41, 36, 0.45);
+        }
+
+        .publication {
+            margin: 0;
+            font-size: clamp(1.25rem, 3vw, 1.65rem);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .edition {
+            margin: 0 0 3px;
+            font-family: Arial, sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #696258;
+        }
+
+        .sheet {
+            margin-top: 18px;
+            background: rgba(250, 247, 239, 0.92);
+            border: 1px solid rgba(85, 77, 62, 0.18);
+            box-shadow: 0 18px 50px rgba(72, 63, 48, 0.16);
+            padding: clamp(28px, 6vw, 68px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .kicker {
+            display: block;
+            margin-bottom: 12px;
+            font-family: Arial, sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 8vw, 5.3rem);
+            line-height: 0.92;
+            letter-spacing: -0.045em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            max-width: 440px;
+            margin: 18px auto 0;
+            font-size: clamp(0.95rem, 2vw, 1.12rem);
+            line-height: 1.6;
+            font-style: italic;
+            color: #70695f;
+        }
+
+        #display {
+            columns: 2;
+            column-gap: clamp(28px, 6vw, 64px);
+            column-rule: 1px solid rgba(44, 41, 36, 0.12);
+            font-size: clamp(0.9rem, 1.6vw, 1.02rem);
+            line-height: 1.72;
+        }
+
+        #display p {
+            break-inside: avoid;
+            margin: 0 0 1.25em;
+            text-wrap: pretty;
+        }
+
+        #display p::first-letter {
+            color: var(--red);
+        }
+
+        .closing {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(44, 41, 36, 0.18);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #817969;
+        }
+
+        @media (max-width: 620px) {
+            .page {
+                width: min(100% - 20px, 920px);
+                margin: 10px auto 20px;
+            }
+
+            .edition {
+                display: none;
+            }
+
+            .sheet {
+                padding: 26px 22px 32px;
+            }
+
+            #display {
+                columns: 1;
+                column-rule: none;
+                line-height: 1.65;
+            }
+
+            header {
+                margin-bottom: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <div class="masthead">
+            <p class="publication">The Counterpoint</p>
+            <p class="edition">A well-known drinking song · No. 99</p>
+        </div>
+
+        <article class="sheet">
+            <header>
+                <span class="kicker">A traditional verse</span>
+                <h1>99 Bottles</h1>
+                <p class="subtitle">One for each bottle on the wall, and one less with every passing refrain.</p>
+            </header>
+
+            <div id="display"></div>
+
+            <footer class="closing">And the music goes round again · Designed by Oyediran Emmanuel Inioluwa</footer>
+        </article>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
